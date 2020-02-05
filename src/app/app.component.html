@@ -1,1 +1,4 @@
-<h1>Udemy angular course - base project</h1>
+<input type="text" [(ngModel)]="id" placeholder="id">
+<input type="text" [(ngModel)]="groupId" placeholder="groupId">
+<button type="button" [routerLink]="['test', id]" [queryParams]="{ groupId: groupId }">Set</button>
+<router-outlet></router-outlet>
