@@ -1,4 +1,5 @@
-import { interval, Subscription, Observable } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
@@ -34,14 +35,17 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (count > 3) {
           observer.error(new Error('Count is grater 3'));
         }
-        if (count === 2) {
+        if (count === 4) {
           observer.complete();
         }
         count++;
       }, 1000);
     });
 
-    this.myIntervalSub = myIntervalObservable.subscribe(count => {
+    this.myIntervalSub = myIntervalObservable.pipe(
+      filter((count: number) => count > 0 ),
+      map((count: number) => 'Round ' + (count + 1)))
+      .subscribe(count => {
       console.log(count);
     }, (error) => {
       console.log(error);
