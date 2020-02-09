@@ -31,12 +31,23 @@ export class HomeComponent implements OnInit, OnDestroy {
       let count = 0;
       setInterval(() => {
         observer.next(count);
+        if (count > 3) {
+          observer.error(new Error('Count is grater 3'));
+        }
+        if (count === 2) {
+          observer.complete();
+        }
         count++;
       }, 1000);
     });
 
     this.myIntervalSub = myIntervalObservable.subscribe(count => {
       console.log(count);
+    }, (error) => {
+      console.log(error);
+    }, () => {
+      console.log('completed!');
+      alert('completed!');
     });
   }
 
