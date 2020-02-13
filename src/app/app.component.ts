@@ -23,5 +23,6 @@ export class AppComponent {
 
   onSubmit() {
     console.log(this.form);
+    console.log(`is valid: ${this.form.valid}`);
   }
 }
