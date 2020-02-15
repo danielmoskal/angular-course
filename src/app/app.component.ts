@@ -15,6 +15,20 @@ export class AppComponent {
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+    // this.form.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret: 'teacher',
+    //   replyTextarea: '',
+    //   gender: 'male'
+    // });
+    this.form.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    });
   }
 
   // onSubmit(form: HTMLFormElement) {
