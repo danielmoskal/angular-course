@@ -12,6 +12,13 @@ export class AppComponent {
   reply: string;
   genders = ['male', 'female'];
   defaultGender = 'female';
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    answer: '',
+    gender: ''
+  };
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -41,6 +48,13 @@ export class AppComponent {
 
   onSubmit() {
     console.log(this.form);
-    console.log(`is valid: ${this.form.valid}`);
+    // console.log(`is valid: ${this.form.valid}`);
+    this.user = {
+      username: this.form.value.userData.username,
+      email: this.form.value.userData.email,
+      secretQuestion: this.form.value.secret,
+      answer: this.form.value.replyTextarea,
+      gender: this.form.value.gender
+    };
   }
 }
