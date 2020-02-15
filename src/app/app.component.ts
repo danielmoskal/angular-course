@@ -56,5 +56,12 @@ export class AppComponent {
       answer: this.form.value.replyTextarea,
       gender: this.form.value.gender
     };
+
+    this.form.reset({
+      userData: {
+        username: 'nameAfterReset'
+      },
+      gender: 'male'
+    });
   }
 }
